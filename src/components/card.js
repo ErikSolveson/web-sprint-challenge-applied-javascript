@@ -1,3 +1,5 @@
+import { fetch } from "msw/lib/types/context";
+
 const Card = (article) => {
   // TASK 5
   // ---------------------
@@ -17,7 +19,32 @@ const Card = (article) => {
   //   </div>
   // </div>
   //
-}
+
+  const cardDiv = document.createElement("div");
+  const headlineDiv = document.createElement("div");
+  const authorDiv = document.createElement("div");
+  const imgDiv = document.createElement("div");
+  const img = document.createElement("img");
+  const authorSpan = document.createElement("span");
+
+  cardDiv.appendChild(headlineDiv);
+  cardDiv.appendChild(authorDiv);
+  authorDiv.appendChild(imgDiv);
+  authorDiv.appendChild(authorSpan);
+  imgDiv.appendChild(img);
+
+  cardDiv.classList.add("card");
+  headlineDiv.classList.add("headline");
+  authorDiv.classList.add("author");
+  imgDiv.classList.add("img-container");
+
+  headlineDiv.textContent = article.headline;
+  authorSpan.textContent = article.authorName;
+  img.src = article.authorPhoto;
+
+  cardDiv.addEventListener("click", console.log(article.headline));
+  return cardDiv;
+};
 
 const cardAppender = (selector) => {
   // TASK 6
@@ -28,6 +55,16 @@ const cardAppender = (selector) => {
   // Create a card from each and every article object in the response, using the Card component.
   // Append each card to the element in the DOM that matches the selector passed to the function.
   //
-}
+  const addPoint = document.querySelector(selector);
 
-export { Card, cardAppender }
+  fetch("https://lambda-times-api.herokuapp.com/articles")
+    .then((response) =>
+      response.articles.javascript.array.forEach((element) => {
+        const card = Card(element);
+        addPoint.appendChild(card);
+      })
+    )
+    .catch(console.log("there was a problem"));
+};
+
+export { Card, cardAppender };

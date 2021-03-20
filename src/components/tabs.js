@@ -20,7 +20,7 @@ const Tabs = (topics) => {
     const tab = document.createElement("div");
     tab.textContent = element;
     tab.classList.add("tab");
-    topicsDiv.append(tab);
+    topicsDiv.appendChild(tab);
   });
 
   return topicsDiv;
@@ -38,7 +38,7 @@ const tabsAppender = (selector) => {
 
   const tabs = Tabs();
 
-  addPoint.append(tabs);
+  addPoint.appendChild(tabs);
 };
 
 export { Tabs, tabsAppender };
