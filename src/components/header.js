@@ -28,6 +28,8 @@ const Header = (title, date, temp) => {
   headerDiv.classList.add("header");
   dateSpan.classList.add("date");
   tempSpan.classList.add("temp");
+
+  return headerDiv;
 };
 
 const headerAppender = (selector) => {
@@ -42,6 +44,8 @@ const headerAppender = (selector) => {
   const header = Header();
 
   addPoint.append(header);
+
+  // return header;
 };
 
 export { Header, headerAppender };
