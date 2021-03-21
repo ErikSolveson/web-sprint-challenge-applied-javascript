@@ -75,7 +75,21 @@ There are two possible ways to submit this project to Canvas. Lambda Staff will 
 Be prepared to demonstrate your understanding of this week's concepts by answering questions on the following topics. You might prepare by writing down your own answers before hand.
 
 1. What is the DOM?
+
+A. The DOM stands for Document Object Model and it is the entire object that contains all the data associated with the page or site in question.
+
 2. What is an event?
+
+A. An event is this context is any action or event that the DOM tracks. There are quite a few and they are triggered by a number of factors, from the page loading to a user's actions on the site, or even mousing away from the site!
+
 3. What is an event listener?
+
+A. An event listener is a peice of code that we the developers can add that will wait and watch for a specific event to happen (i.e. click a button) and then execute some instruction that we linked to the event listener.
+
 4. Why would we convert a NodeList into an Array?
+
+A. An Array has a lot of functionality in its default methods that we don't get if we're using NodeLists.
+
 5. What is a component?
+
+A. A component is a smaller peice of code that can be used multiple times in our finished program or programs. In our context a component will normally output a peice of HTML along with its coresponding CSS and JS.
