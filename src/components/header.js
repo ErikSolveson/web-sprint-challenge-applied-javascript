@@ -40,8 +40,11 @@ const headerAppender = (selector) => {
   // It should append the header to the element in the DOM that matches the given selector.
   //
   const addPoint = document.querySelector(selector);
-
-  const header = Header();
+  const header = Header(
+    "The Kligon Empire",
+    "March 20, 2021",
+    "not sure what this is...."
+  );
 
   addPoint.appendChild(header);
 

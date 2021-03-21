@@ -1,4 +1,4 @@
-import { fetch } from "msw/lib/types/context";
+import axios from "axios";
 
 const Card = (article) => {
   // TASK 5
@@ -19,29 +19,29 @@ const Card = (article) => {
   //   </div>
   // </div>
   //
-
+  // create all the elements
   const cardDiv = document.createElement("div");
   const headlineDiv = document.createElement("div");
   const authorDiv = document.createElement("div");
   const imgDiv = document.createElement("div");
   const img = document.createElement("img");
   const authorSpan = document.createElement("span");
-
+  // create the structure
   cardDiv.appendChild(headlineDiv);
   cardDiv.appendChild(authorDiv);
   authorDiv.appendChild(imgDiv);
   authorDiv.appendChild(authorSpan);
   imgDiv.appendChild(img);
-
+  // add any classes
   cardDiv.classList.add("card");
   headlineDiv.classList.add("headline");
   authorDiv.classList.add("author");
   imgDiv.classList.add("img-container");
-
+  // add the content
   headlineDiv.textContent = article.headline;
   authorSpan.textContent = article.authorName;
   img.src = article.authorPhoto;
-
+  // add the event listener
   cardDiv.addEventListener("click", console.log(article.headline));
   return cardDiv;
 };
@@ -56,15 +56,32 @@ const cardAppender = (selector) => {
   // Append each card to the element in the DOM that matches the selector passed to the function.
   //
   const addPoint = document.querySelector(selector);
-
-  fetch("https://lambda-times-api.herokuapp.com/articles")
-    .then((response) =>
-      response.articles.javascript.array.forEach((element) => {
+  axios
+    .get("https://lambda-times-api.herokuapp.com/articles")
+    .then((response) => {
+      console.log(response.data.articles);
+      response.data.articles.bootstrap.forEach((element) => {
         const card = Card(element);
         addPoint.appendChild(card);
-      })
-    )
-    .catch(console.log("there was a problem"));
+      });
+      response.data.articles.javascript.forEach((element) => {
+        const card = Card(element);
+        addPoint.appendChild(card);
+      });
+      response.data.articles.technology.forEach((element) => {
+        const card = Card(element);
+        addPoint.appendChild(card);
+      });
+      response.data.articles.jquery.forEach((element) => {
+        const card = Card(element);
+        addPoint.appendChild(card);
+      });
+      response.data.articles.node.forEach((element) => {
+        const card = Card(element);
+        addPoint.appendChild(card);
+      });
+    });
+  // .catch(console.log("there was a problem"));
 };
 
 export { Card, cardAppender };
