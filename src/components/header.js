@@ -11,6 +11,8 @@ const Header = (title, date, temp) => {
   //    <span class="temp">{ temp }</span>
   //  </div>
   //  
+
+  //create the containging element for our header
   const header = document.createElement('div')
   const spanDate = document.createElement('span')
   const h1 = document.createElement('h1')
